@@ -161,6 +161,20 @@ export class RightComponentComponent implements OnInit {
     }
   ];
 
+  roles: Object = [
+    { value: 'Manager' },
+    { value: 'Sr. Manager' },
+    { value: 'Tech Lead' },
+    { value: 'Engineer' }
+  ];
+
+  departments: Object = [
+    { value: 'Design' },
+    { value: 'Marketing' },
+    { value: 'Admin' },
+    { value: 'Sales' }
+  ];
+
   displayedColumns: string[] = [
     'firstName',
     'department',
@@ -176,6 +190,9 @@ export class RightComponentComponent implements OnInit {
   emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
   phonePattern: any = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
   showModal: boolean = false;
+
+  checked: boolean = false;
+  color: string = 'primary';
 
   @Input()
   data: any;

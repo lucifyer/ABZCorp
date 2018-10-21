@@ -1,6 +1,12 @@
-<input type="text" placeholder="SearchFiled">
-Input switch toggle material toggle button
-<input type="button" value="Add a new member" (click)="displayModal()">
+<input matInput placeholder="Search Name">
+
+<section class="example-section">
+  <mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">
+    Slide me!
+  </mat-slide-toggle>
+</section>
+
+<button (click)="displayModal()" mat-raised-button color="primary">Add a new member</button>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
@@ -43,37 +49,51 @@ Input switch toggle material toggle button
 </table>
 
 
-<div *ngIf="showModal" class="formModal">
-  <div class="modalHeader">
-    Add Team Member
-  </div>
+<mat-card *ngIf="showModal" class="example-card">
+  <mat-card-header>
+    <mat-card-title>Add Team Member</mat-card-title>
+  </mat-card-header>
 
-  <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
-    <div class="modalBody">
-      First Name*
-      <input type="text" formControlName="firstName">
-      Last Name*
-      <input type="text" formControlName="lastName">
-      Email address
-      <input type="text" formControlName="email">
-      Role
-      <select formControlName="role">
-        <option value="Manager">Manager</option>
-        <option value="Sr. Manager">Sr. Manager</option>
-        <option value="Tech Lead">Tech Lead</option>
-        <option value="Engineer">Engineer</option>
-      </select>
-      Phone
-      <input type="text" formControlName="phone">
-      Department
-      <select formControlName="department">
-        <option value="Design">Design</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Admin">Admin</option>
-        <option value="Sales">Sales</option>
-      </select>
+  <mat-card-content>
+    <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
+      <div class="modalBody">
 
-      <button type="submit">Submit</button>
-    </div>
-  </form>
-</div>
+        <mat-form-field>
+          <input matInput placeholder="First Name*" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Last Name*" formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Email address" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Role" formControlName="role">
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{role.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Phone" formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Department" formControlName="department">
+            <mat-option *ngFor="let department of departments" [value]="department.value">
+              {{department.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button>Cancel</button>
+        <button type="submit" mat-raised-button color="primary">Add Member</button>
+      </div>
+    </form>
+  </mat-card-content>
+
+</mat-card>

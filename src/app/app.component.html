@@ -1,10 +1,24 @@
-<div class="header">
-  ABZ CORP HEADER
+<div id="header">
+  <img id="logo" src="assets/logo.jpg">
+
+  <span id="rightPull">
+
+    <img src="assets/notification.png" height="20px" width="20px">
+    <img src="assets/profile.jpg" height="40px" width="40px" style="border-radius:50%">
+  </span>
+
 </div>
 <div class="container">
 
   <!-- List of projects to filter the employees from -->
   <div class="leftComponent">
+
+    <div class="profileSection">
+      <img src="assets/profile.jpg" height="100px" width="100px" style="border-radius:50%">
+      TED MOSBY
+      Human Resource | Sr. Associate
+    </div>
+
     <ul *ngFor="let project of projects">
       <li (click)="passId(project.id)">{{project.name}}</li>
     </ul>
