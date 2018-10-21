@@ -1,16 +1,22 @@
+<div class="header">
+  ABZ CORP HEADER
+</div>
 <div class="container">
-  <div class="topBar">
-    {{title}}
-  </div>
 
+  <!-- List of projects to filter the employees from -->
   <div class="leftComponent">
     <ul *ngFor="let project of projects">
       <li (click)="passId(project.id)">{{project.name}}</li>
     </ul>
   </div>
 
+  <!-- Employees list component -->
   <div class="rightComponent">
     <app-right-component [data]="toChild"></app-right-component>
   </div>
+</div>
 
+<!-- Footer -->
+<div class="footer">
+  Footer
 </div>

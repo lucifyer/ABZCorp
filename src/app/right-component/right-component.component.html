@@ -1,3 +1,79 @@
-<ul *ngFor="let employee of employees">
-  <li>{{employee.firstName}} {{employee.lastName}}</li>
-</ul>
+<input type="text" placeholder="SearchFiled">
+Input switch toggle material toggle button
+<input type="button" value="Add a new member" (click)="displayModal()">
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> NAME </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="department">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> DEPARTMENT </th>
+    <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+  </ng-container>
+
+  <!-- email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> EMAIL </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- phone Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> PHONE </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ROLE </th>
+    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef=" ">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container> -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<div *ngIf="showModal" class="formModal">
+  <div class="modalHeader">
+    Add Team Member
+  </div>
+
+  <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
+    <div class="modalBody">
+      First Name*
+      <input type="text" formControlName="firstName">
+      Last Name*
+      <input type="text" formControlName="lastName">
+      Email address
+      <input type="text" formControlName="email">
+      Role
+      <select formControlName="role">
+        <option value="Manager">Manager</option>
+        <option value="Sr. Manager">Sr. Manager</option>
+        <option value="Tech Lead">Tech Lead</option>
+        <option value="Engineer">Engineer</option>
+      </select>
+      Phone
+      <input type="text" formControlName="phone">
+      Department
+      <select formControlName="department">
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Admin">Admin</option>
+        <option value="Sales">Sales</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
