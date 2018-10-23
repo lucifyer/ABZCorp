@@ -1,13 +1,17 @@
-<input matInput placeholder="Search Name">
+<div *ngIf="showModal" id="overlay"></div>
 
-<section class="example-section">
-  <mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">
-    Slide me!
-  </mat-slide-toggle>
-</section>
 
-<button (click)="displayModal()" mat-raised-button color="primary">Add a new member</button>
+<div class="topFixed">
+  <input matInput placeholder="Search Name">
 
+  <section class="example-section">
+    <mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">
+      Slide me!
+    </mat-slide-toggle>
+  </section>
+
+  <button (click)="displayModal()" mat-raised-button color="primary">Add a new member</button>
+</div>
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
@@ -48,52 +52,53 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
+<div class="modal">
+  <mat-card *ngIf="showModal" class="example-card">
+    <mat-card-header>
+      <mat-card-title>Add Team Member</mat-card-title>
+    </mat-card-header>
 
-<mat-card *ngIf="showModal" class="example-card">
-  <mat-card-header>
-    <mat-card-title>Add Team Member</mat-card-title>
-  </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
+        <div class="modalBody">
 
-  <mat-card-content>
-    <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
-      <div class="modalBody">
+          <mat-form-field>
+            <input matInput placeholder="First Name*" formControlName="firstName">
+          </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="First Name*" formControlName="firstName">
-        </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last Name*" formControlName="lastName">
+          </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Last Name*" formControlName="lastName">
-        </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email address" formControlName="email">
+          </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Email address" formControlName="email">
-        </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Role" formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.value">
+                {{role.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-select placeholder="Role" formControlName="role">
-            <mat-option *ngFor="let role of roles" [value]="role.value">
-              {{role.value}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Phone" formControlName="phone">
+          </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Phone" formControlName="phone">
-        </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Department" formControlName="department">
+              <mat-option *ngFor="let department of departments" [value]="department.value">
+                {{department.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button>Cancel</button>
+          <button type="submit" mat-raised-button color="primary">Add Member</button>
+        </div>
+      </form>
+    </mat-card-content>
 
-        <mat-form-field>
-          <mat-select placeholder="Department" formControlName="department">
-            <mat-option *ngFor="let department of departments" [value]="department.value">
-              {{department.value}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <button mat-raised-button>Cancel</button>
-        <button type="submit" mat-raised-button color="primary">Add Member</button>
-      </div>
-    </form>
-  </mat-card-content>
-
-</mat-card>
+  </mat-card>
+</div>
