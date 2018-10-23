@@ -8,7 +8,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./right-component.component.css']
 })
 export class RightComponentComponent implements OnInit {
-  public employees = [
+  public initEmployees = [
     {
       firstName: 'Dean',
       lastName: 'Jones',
@@ -17,7 +17,7 @@ export class RightComponentComponent implements OnInit {
       role: 'Sr. Mangager',
       department: 'Design',
       onlineStat: 0,
-      projectID: 1
+      projectID: 2
     },
     {
       firstName: 'Emily',
@@ -27,7 +27,7 @@ export class RightComponentComponent implements OnInit {
       role: 'Tech Lead',
       department: 'Design',
       onlineStat: 1,
-      projectID: 1
+      projectID: 0
     },
     {
       firstName: 'Gary',
@@ -37,7 +37,7 @@ export class RightComponentComponent implements OnInit {
       role: 'Engineer',
       department: 'Marketing',
       onlineStat: 1,
-      projectID: 1
+      projectID: 0
     },
     {
       firstName: 'Hamilton',
@@ -47,7 +47,7 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'Admin',
       onlineStat: 1,
-      projectID: 1
+      projectID: 3
     },
     {
       firstName: 'Kartik',
@@ -57,7 +57,67 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 1
+      projectID: 3
+    },
+    {
+      firstName: 'Ted',
+      lastName: 'Mosby',
+      email: 'abc@gmail.com',
+      phone: '+1 245 2456 234',
+      role: 'Mangager',
+      department: 'IT',
+      onlineStat: 1,
+      projectID: 4
+    },
+    {
+      firstName: 'Ted',
+      lastName: 'Mosby',
+      email: 'abc@gmail.com',
+      phone: '+1 245 2456 234',
+      role: 'Mangager',
+      department: 'IT',
+      onlineStat: 1,
+      projectID: 4
+    },
+    {
+      firstName: 'Ted',
+      lastName: 'Mosby',
+      email: 'abc@gmail.com',
+      phone: '+1 245 2456 234',
+      role: 'Mangager',
+      department: 'IT',
+      onlineStat: 1,
+      projectID: 5
+    },
+    {
+      firstName: 'Ted',
+      lastName: 'Mosby',
+      email: 'abc@gmail.com',
+      phone: '+1 245 2456 234',
+      role: 'Mangager',
+      department: 'IT',
+      onlineStat: 1,
+      projectID: 0
+    },
+    {
+      firstName: 'Ted',
+      lastName: 'Mosby',
+      email: 'abc@gmail.com',
+      phone: '+1 245 2456 234',
+      role: 'Mangager',
+      department: 'IT',
+      onlineStat: 1,
+      projectID: 0
+    },
+    {
+      firstName: 'Ted',
+      lastName: 'Mosby',
+      email: 'abc@gmail.com',
+      phone: '+1 245 2456 234',
+      role: 'Mangager',
+      department: 'IT',
+      onlineStat: 1,
+      projectID: 0
     },
     {
       firstName: 'Ted',
@@ -87,7 +147,7 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 1
+      projectID: 2
     },
     {
       firstName: 'Ted',
@@ -97,69 +157,10 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 1
-    },
-    {
-      firstName: 'Ted',
-      lastName: 'Mosby',
-      email: 'abc@gmail.com',
-      phone: '+1 245 2456 234',
-      role: 'Mangager',
-      department: 'IT',
-      onlineStat: 1,
-      projectID: 1
-    },
-    {
-      firstName: 'Ted',
-      lastName: 'Mosby',
-      email: 'abc@gmail.com',
-      phone: '+1 245 2456 234',
-      role: 'Mangager',
-      department: 'IT',
-      onlineStat: 1,
-      projectID: 1
-    },
-    {
-      firstName: 'Ted',
-      lastName: 'Mosby',
-      email: 'abc@gmail.com',
-      phone: '+1 245 2456 234',
-      role: 'Mangager',
-      department: 'IT',
-      onlineStat: 1,
-      projectID: 1
-    },
-    {
-      firstName: 'Ted',
-      lastName: 'Mosby',
-      email: 'abc@gmail.com',
-      phone: '+1 245 2456 234',
-      role: 'Mangager',
-      department: 'IT',
-      onlineStat: 1,
-      projectID: 1
-    },
-    {
-      firstName: 'Ted',
-      lastName: 'Mosby',
-      email: 'abc@gmail.com',
-      phone: '+1 245 2456 234',
-      role: 'Mangager',
-      department: 'IT',
-      onlineStat: 1,
-      projectID: 1
-    },
-    {
-      firstName: 'Ted',
-      lastName: 'Mosby',
-      email: 'abc@gmail.com',
-      phone: '+1 245 2456 234',
-      role: 'Mangager',
-      department: 'IT',
-      onlineStat: 1,
-      projectID: 1
+      projectID: 2
     }
   ];
+  public employees = [];
 
   roles: Object = [
     { value: 'Manager' },
@@ -182,8 +183,6 @@ export class RightComponentComponent implements OnInit {
     'phone',
     'role'
   ];
-  dataSource = new MatTableDataSource(this.employees);
-
   @ViewChild(MatSort)
   sort: MatSort;
   addMember: FormGroup;
@@ -196,16 +195,7 @@ export class RightComponentComponent implements OnInit {
 
   @Input()
   data: any;
-  ngOnChanges(changes) {
-    // changes.prop contains the old and the new value...
-    // console.log(this.data);
-    //Filter employees based on project id
-  }
-
-  displayModal() {
-    //Display the modal of form to add a new employee
-    this.showModal = true;
-  }
+  dataSource: any;
 
   constructor(private fb: FormBuilder) {
     this.addMember = this.fb.group({
@@ -230,6 +220,55 @@ export class RightComponentComponent implements OnInit {
     });
   }
 
+  public updateEmployees() {
+    this.employees = [];
+    for (const prop in this.initEmployees) {
+      if (this.initEmployees[prop].projectID == this.data)
+        this.employees.push(this.initEmployees[prop]);
+      // console.log(this.initEmployees[prop].firstName);
+    }
+    console.log(this.employees);
+    this.dataSource = new MatTableDataSource(this.employees);
+    this.dataSource.sort = this.sort;
+  }
+  ngOnInit() {
+    this.updateEmployees();
+  }
+
+  ngOnChanges(changes) {
+    // changes.prop contains the old and the new value...
+    // console.log(this.data);
+    //Filter employees based on project id
+    this.updateEmployees();
+  }
+
+  onSearch(event: any) {
+    // console.log(event.target.value);
+    if (event.target.value == '') {
+      this.updateEmployees();
+      return;
+    }
+    let temp = this.employees;
+    this.employees = [];
+    for (const prop in temp) {
+      if (
+        temp[prop].firstName
+          .toUpperCase()
+          .includes(event.target.value.toUpperCase())
+      )
+        this.employees.push(temp[prop]);
+      // console.log(temp[prop].firstName);
+    }
+    // console.log(this.employees);
+    this.dataSource = new MatTableDataSource(this.employees);
+    this.dataSource.sort = this.sort;
+  }
+
+  displayModal() {
+    //Display the modal of form to add a new employee
+    this.showModal = true;
+  }
+
   memberRegister(data) {
     console.log('\n\nForm Data: ', data);
     let newMember = {
@@ -246,9 +285,5 @@ export class RightComponentComponent implements OnInit {
     this.employees.push(newMember);
     this.dataSource.sort = this.sort;
     this.showModal = false;
-  }
-
-  ngOnInit() {
-    this.dataSource.sort = this.sort;
   }
 }

@@ -2,7 +2,7 @@
 
 
 <div class="topFixed">
-  <input matInput placeholder="Search Name">
+  <input (keyup)="onSearch($event)" matInput placeholder="Search Name">
 
   <section class="example-section">
     <mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">

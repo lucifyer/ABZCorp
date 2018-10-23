@@ -26,7 +26,7 @@
   height: 540px;
   overflow-y: auto;
   float: left;
-  margin-left: 9%;
+  margin-left: 8%;
 }
 
 .rightComponent {
@@ -34,7 +34,7 @@
   height: 540px;
   overflow-y: auto;
   float: right;
-  margin-right: 9%;
+  margin-right: 8%;
 }
 
 .footer {

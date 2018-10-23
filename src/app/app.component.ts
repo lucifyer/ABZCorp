@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public toChild: number;
+  public toChild: number = 0;
 
   passId(projectID: any) {
     this.toChild = projectID;
@@ -14,8 +14,12 @@ export class AppComponent {
 
   public projects = [
     {
-      id: 1,
+      id: 0,
       name: 'Project A'
+    },
+    {
+      id: 1,
+      name: 'Project B'
     },
     {
       id: 2,
