@@ -2,36 +2,43 @@
   <img id="logo" src="assets/logo.jpg">
 
   <div id="rightPull" style="float:right;margin-right: 8%;">
-    <img src="assets/notification.png" height="20px" width="20px">
-    <img src="assets/profile.jpg" height="40px" width="40px" style="border-radius:50%">
+    <img style="padding:0.5em;" src="assets/notification.png" height="20px" width="20px">
+    <img style="padding:0.5em;border-radius:50%" src="assets/profile.jpg" height="40px" width="40px">
   </div>
 
 </div>
 <div class="container">
-
   <!-- List of projects to filter the employees from -->
-  <div class="leftComponent">
+  <div id="leftComponent">
 
-    <div class="profileSection">
-      <img src="assets/profile.jpg" height="100px" width="100px" style="border-radius:50%">
-      TED MOSBY
-      Human Resource | Sr. Associate
+    <div id="profileSection">
+      <img src="assets/profile.jpg" height="100px" width="100px" style="border-radius:50%;display: block;
+      margin-left: auto;
+      margin-right: auto;
+      ">
+      <p class="name">TED MOSBY</p>
+      <p class="title">Human Resource | Sr. Associate</p>
     </div>
 
-    <ul *ngFor="let project of projects">
-      <li (click)="passId(project.id)">{{project.name}}</li>
-    </ul>
+    <div id="projectList">
+
+      <ul *ngFor="let project of projects">
+        <li class="projects" [ngClass]="{'active': selectedItem == project}" (click)="passId($event, project.id,project)">
+          {{project.name}}
+        </li>
+      </ul>
+    </div>
   </div>
 
   <!-- Employees list component -->
-  <div class="rightComponent">
+  <div id="rightComponent">
     <app-right-component [data]="toChild"></app-right-component>
   </div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
-
-  Footer
-
+  <p>
+    &copy; 2013-2018 ABZCorp Company. All Rights Reserved.
+  </p>
 </div>

@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public toChild: number = 0;
-
-  passId(projectID: any) {
+  selectedItem: any = 0;
+  passId(evet: any, projectID: any, newValue: any) {
     this.toChild = projectID;
+    this.selectedItem = newValue; // don't forget to update the model here
   }
 
   public projects = [
