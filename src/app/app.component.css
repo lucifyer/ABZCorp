@@ -59,8 +59,6 @@
 
 #rightComponent {
   width: 868px;
-  height: 540px;
-  overflow-y: auto;
   float: right;
   margin-right: 8%;
 }

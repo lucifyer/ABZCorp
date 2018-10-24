@@ -1,12 +1,13 @@
 <div *ngIf="showModal" id="overlay"></div>
 
-
 <div class="topFixed">
+  {{projectName}}
+  <br>
+  {{onlineCount}} active members
   <input (keyup)="onSearch($event)" matInput placeholder="Search Name">
 
   <section class="example-section">
-    <mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">
-      Slide me!
+    Online now<mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">
     </mat-slide-toggle>
   </section>
 

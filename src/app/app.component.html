@@ -23,7 +23,7 @@
     <div id="projectList">
 
       <ul *ngFor="let project of projects">
-        <li class="projects" [ngClass]="{'active': selectedItem == project}" (click)="passId($event, project.id,project)">
+        <li class="projects" [ngClass]="{'active': selectedItem == project}" (click)="passId(project)">
           {{project.name}}
         </li>
       </ul>

@@ -6,12 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public toChild: number = 0;
-  selectedItem: any = 0;
-  passId(evet: any, projectID: any, newValue: any) {
-    this.toChild = projectID;
-    this.selectedItem = newValue; // don't forget to update the model here
-  }
+  public toChild = {
+    id: 0,
+    name: 'Project A'
+  };
 
   public projects = [
     {
@@ -71,4 +69,9 @@ export class AppComponent {
       name: 'Project N'
     }
   ];
+  selectedItem: any = this.projects[0];
+  passId(newValue: any) {
+    this.toChild = newValue;
+    this.selectedItem = newValue; // don't forget to update the model here
+  }
 }

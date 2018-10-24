@@ -161,6 +161,8 @@ export class RightComponentComponent implements OnInit {
     }
   ];
   public employees = [];
+  projectName: string;
+  onlineCount: number = 0;
 
   roles: Object = [
     { value: 'Manager' },
@@ -221,17 +223,25 @@ export class RightComponentComponent implements OnInit {
   }
 
   public updateEmployees() {
+    this.onlineCount = 0;
     this.employees = [];
     for (const prop in this.initEmployees) {
-      if (this.initEmployees[prop].projectID == this.data)
+      if (this.initEmployees[prop].projectID == this.data.id)
         this.employees.push(this.initEmployees[prop]);
+
       // console.log(this.initEmployees[prop].firstName);
     }
-    console.log(this.employees);
+
+    for (const prop in this.employees) {
+      if (this.employees[prop].onlineStat == 1) this.onlineCount++;
+    }
+    // console.log(this.employees);
     this.dataSource = new MatTableDataSource(this.employees);
     this.dataSource.sort = this.sort;
   }
   ngOnInit() {
+    this.projectName = this.data.name;
+
     this.updateEmployees();
   }
 
@@ -239,6 +249,7 @@ export class RightComponentComponent implements OnInit {
     // changes.prop contains the old and the new value...
     // console.log(this.data);
     //Filter employees based on project id
+    this.projectName = this.data.name;
     this.updateEmployees();
   }
 

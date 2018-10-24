@@ -6,10 +6,6 @@
   top: 30%;
 }
 
-.topFixed {
-  position: absolute;
-}
-
 #overlay {
   position: fixed;
   width: 100%;
