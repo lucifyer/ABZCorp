@@ -334,4 +334,25 @@ export class RightComponentComponent implements OnInit {
     this.updateEmployees();
     this.showModal = false;
   }
+
+  public onlineChange() {
+    this.checked = !this.checked;
+    if (this.checked == true) {
+      this.onlineCount = 0;
+      this.employees = [];
+      for (const prop in this.initEmployees) {
+        if (
+          this.initEmployees[prop].projectID == this.data.id &&
+          this.initEmployees[prop].onlineStat == 1
+        )
+          this.employees.push(this.initEmployees[prop]);
+      }
+
+      for (const prop in this.employees) {
+        if (this.employees[prop].onlineStat == 1) this.onlineCount++;
+      }
+      this.dataSource = new MatTableDataSource(this.employees);
+      this.dataSource.sort = this.sort;
+    } else this.updateEmployees();
+  }
 }
