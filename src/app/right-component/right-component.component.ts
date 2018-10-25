@@ -236,18 +236,9 @@ export class RightComponentComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phone: [
         null,
-        Validators.compose([
-          Validators.required,
-          Validators.pattern(this.phonePattern)
-        ])
+        Validators.compose([Validators.pattern(this.phonePattern)])
       ],
-      email: [
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.pattern(this.emailPattern)
-        ])
-      ],
+      email: ['', Validators.compose([Validators.pattern(this.emailPattern)])],
       role: [null, null],
       department: [null, null]
     });
@@ -317,6 +308,9 @@ export class RightComponentComponent implements OnInit {
 
   memberRegister(data) {
     console.log('\n\nForm Data: ', data);
+    if (this.addMember.invalid) {
+      return;
+    }
     let newMember = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -333,6 +327,7 @@ export class RightComponentComponent implements OnInit {
     this.initEmployees.push(newMember);
     this.updateEmployees();
     this.showModal = false;
+    this.addMember.reset();
   }
 
   public onlineChange() {

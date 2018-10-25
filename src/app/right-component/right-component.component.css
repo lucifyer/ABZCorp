@@ -3,6 +3,7 @@
   z-index: 200;
   left: 30%;
   right: 30%;
+  text-align: center;
   top: 30%;
 }
 
@@ -37,8 +38,15 @@
   border-radius: 50px;
   border: 2px solid lightgrey;
   margin-left: 20px;
-  height: 22px;
-  /*add search icon*/
+  height: 30px;
+  width: 225px;
+}
+
+input.searchInput {
+  background-image: url(../../assets/search.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 15%;
 }
 
 .leftPull {
@@ -51,11 +59,28 @@
 .table {
   clear: both;
 }
-.addMember {
+.blueButton {
   margin-left: 10px;
   border-radius: 20px;
   background-color: blue;
-  /*add plus icon*/
+  font-size: 13px;
+  color: #ffffff;
+}
+.cancelButton {
+  margin-right: 0px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: blue;
+}
+
+.leftInput {
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+.rightInput {
+  margin-left: 50px;
 }
 
 th {
@@ -67,13 +92,21 @@ th {
 .quote {
   font-size: 10px;
   color: #858585;
+  margin-left: 5px;
 }
 
 .name {
   font-size: 13px;
   color: #333333;
+  margin-left: 5px;
 }
 
+.correction {
+  position: relative;
+  left: -10px;
+}
+
+/*Online badge on profile photos*/
 .dot {
   height: 10px;
   width: 10px;
@@ -82,4 +115,14 @@ th {
   display: inline-block;
   position: relative;
   left: -20px;
+}
+
+/* To change color of mat-slide-toggle button to green*/
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #4efe36;
+}
+/deep/
+  .mat-slide-toggle.mat-checked:not(.mat-disabled)
+  .mat-slide-toggle-thumb {
+  background-color: #4efe36;
 }

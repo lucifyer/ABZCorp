@@ -3,7 +3,7 @@
 <div class="topFixed">
   <div class="leftPull">
     <span class="projectName">{{projectName}}</span>
-    <input class="searchInput" (keyup)="onSearch($event)" placeholder="Search">
+    <input class="searchInput" (keyup)="onSearch($event)">
     <br>
     <span class="activeText">{{onlineCount}} active members</span>
   </div>
@@ -12,7 +12,9 @@
     Online now
     <mat-slide-toggle (click)="onlineChange()" [color]="primary" (checked)="checked">
     </mat-slide-toggle>
-    <button class="addMember" (click)="displayModal()" mat-raised-button color="primary">Add a new member</button>
+    <button class="blueButton" (click)="displayModal()" mat-raised-button><i class="material-icons">
+        add
+      </i>Add a new member</button>
   </div>
 </div>
 
@@ -27,7 +29,7 @@
         <span *ngIf="element.onlineStat == 1">
           <span class="dot"></span>
         </span>
-        <span class="name">{{element.firstName}} {{element.lastName}}</span>
+        <span [ngClass]="{'name':true,'correction':element.onlineStat == 1}">{{element.firstName}} {{element.lastName}}</span>
         <br>
         <span class="quote">{{element.quote}}</span>
       </td>
@@ -70,28 +72,28 @@
 
 
 <div class="modal">
-  <mat-card *ngIf="showModal" class="example-card">
-    <mat-card-header>
+  <mat-card *ngIf="showModal">
+    <mat-card-header style="border-bottom:1px solid grey">
       <mat-card-title>Add Team Member</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
-        <div class="modalBody">
+      <div class="modalBody">
+        <form [formGroup]="addMember" (ngSubmit)="memberRegister(addMember.value)">
 
           <mat-form-field>
-            <input matInput required placeholder="First Name" formControlName="firstName">
+            <input class="leftInput" matInput required placeholder="First Name" formControlName="firstName">
           </mat-form-field>
 
-          <mat-form-field>
+          <mat-form-field class="rightInput">
             <input matInput required placeholder="Last Name" formControlName="lastName">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Email address" formControlName="email">
+            <input class="leftInput" matInput placeholder="Email address" formControlName="email">
           </mat-form-field>
 
-          <mat-form-field>
+          <mat-form-field class="rightInput">
             <mat-select placeholder="Role" formControlName="role">
               <mat-option *ngFor="let role of roles" [value]="role.value">
                 {{role.value}}
@@ -100,10 +102,10 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Phone" formControlName="phone">
+            <input class="leftInput" matInput placeholder="Phone" formControlName="phone">
           </mat-form-field>
 
-          <mat-form-field>
+          <mat-form-field class="rightInput">
             <mat-select placeholder="Department" formControlName="department">
               <mat-option *ngFor="let department of departments" [value]="department.value">
                 {{department.value}}
@@ -111,10 +113,10 @@
             </mat-select>
           </mat-form-field>
           <br>
-          <input type="button" value="Cancel" (click)="closeModal()" mat-raised-button>
-          <button type="submit" mat-raised-button color="primary">Add Member</button>
-        </div>
-      </form>
+          <button class="cancelButton" (click)="closeModal()" mat-raised-button>Cancel</button>
+          <button type="submit" mat-raised-button class="blueButton">Add Member</button>
+        </form>
+      </div>
     </mat-card-content>
 
   </mat-card>
