@@ -28,7 +28,7 @@ export class RightComponentComponent implements OnInit {
       phone: '+1 245 2456 234',
       role: 'Tech Lead',
       department: 'Design',
-      onlineStat: 1,
+      onlineStat: 0,
       projectID: 0,
       profImg: 'assets/profilePic.jpg',
       quote: 'Lorem Ipsum'

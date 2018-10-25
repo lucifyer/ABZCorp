@@ -23,6 +23,9 @@
       <th width="200rem" mat-header-cell *matHeaderCellDef mat-sort-header> NAME </th>
       <td mat-cell *matCellDef="let element">
         <img class="profileImg" src={{element.profImg}} height="30px" width="30px" style="border-radius:50%;margin-right:15px;float:left">
+        <span *ngIf="element.onlineStat == 1">
+          <span class="dot"></span>
+        </span>
         <span class="name">{{element.firstName}} {{element.lastName}}</span>
         <br>
         <span class="quote">{{element.quote}}</span>
