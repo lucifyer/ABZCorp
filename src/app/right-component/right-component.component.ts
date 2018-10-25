@@ -17,7 +17,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Sr. Mangager',
       department: 'Design',
       onlineStat: 0,
-      projectID: 2
+      projectID: 2,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Emily',
@@ -27,7 +29,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Tech Lead',
       department: 'Design',
       onlineStat: 1,
-      projectID: 0
+      projectID: 0,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Gary',
@@ -37,7 +41,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Engineer',
       department: 'Marketing',
       onlineStat: 1,
-      projectID: 0
+      projectID: 0,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Hamilton',
@@ -47,7 +53,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'Admin',
       onlineStat: 1,
-      projectID: 3
+      projectID: 3,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Kartik',
@@ -57,7 +65,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 3
+      projectID: 3,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -67,7 +77,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 4
+      projectID: 4,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -77,7 +89,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 4
+      projectID: 4,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -87,7 +101,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 5
+      projectID: 5,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -97,7 +113,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 0
+      projectID: 0,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -107,7 +125,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 0
+      projectID: 0,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -117,7 +137,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 0
+      projectID: 0,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -127,7 +149,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 1
+      projectID: 1,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -137,7 +161,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 1
+      projectID: 1,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -147,7 +173,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 2
+      projectID: 2,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     },
     {
       firstName: 'Ted',
@@ -157,7 +185,9 @@ export class RightComponentComponent implements OnInit {
       role: 'Mangager',
       department: 'IT',
       onlineStat: 1,
-      projectID: 2
+      projectID: 2,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     }
   ];
   public employees = [];
@@ -183,7 +213,8 @@ export class RightComponentComponent implements OnInit {
     'department',
     'email',
     'phone',
-    'role'
+    'role',
+    'more'
   ];
   @ViewChild(MatSort)
   sort: MatSort;
@@ -280,6 +311,10 @@ export class RightComponentComponent implements OnInit {
     this.showModal = true;
   }
 
+  closeModal() {
+    this.showModal = false;
+  }
+
   memberRegister(data) {
     console.log('\n\nForm Data: ', data);
     let newMember = {
@@ -290,11 +325,13 @@ export class RightComponentComponent implements OnInit {
       role: data.role,
       department: data.department,
       onlineStat: 1,
-      projectID: 1
+      projectID: this.data.id,
+      profImg: 'assets/profilePic.jpg',
+      quote: 'Lorem Ipsum'
     };
 
-    this.employees.push(newMember);
-    this.dataSource.sort = this.sort;
+    this.initEmployees.push(newMember);
+    this.updateEmployees();
     this.showModal = false;
   }
 }

@@ -34,6 +34,9 @@
   width: 250px;
   float: left;
   margin-left: 8%;
+  background-color: white;
+  margin-top: 10px;
+  box-shadow: 5px;
 }
 
 #projectList {
@@ -47,7 +50,8 @@
 .projects {
   font-size: 14px;
   color: #858585;
-  padding: 4px;
+  padding: 10px;
+  border-radius: 0 50px 50px 0;
 }
 
 .active {
@@ -61,6 +65,7 @@
   width: 868px;
   float: right;
   margin-right: 8%;
+  margin-top: 10px;
 }
 
 .footer {

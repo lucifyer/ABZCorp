@@ -1,57 +1,69 @@
 <div *ngIf="showModal" id="overlay"></div>
 
 <div class="topFixed">
-  {{projectName}}
-  <br>
-  {{onlineCount}} active members
-  <input (keyup)="onSearch($event)" matInput placeholder="Search Name">
+  <div class="leftPull">
+    <span class="projectName">{{projectName}}</span>
+    <input class="searchInput" (keyup)="onSearch($event)" placeholder="Search">
+    <br>
+    <span class="activeText">{{onlineCount}} active members</span>
+  </div>
 
-  <section class="example-section">
+  <div class="rightPull">
     Online now<mat-slide-toggle class="example-margin" [color]="primary" [checked]="checked">
     </mat-slide-toggle>
-  </section>
-
-  <button (click)="displayModal()" mat-raised-button color="primary">Add a new member</button>
+    <button class="addMember" (click)="displayModal()" mat-raised-button color="primary">Add a new member</button>
+  </div>
 </div>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> NAME </th>
-    <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
-  </ng-container>
+<div class="table">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="department">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> DEPARTMENT </th>
-    <td mat-cell *matCellDef="let element"> {{element.department}} </td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th width="200rem" mat-header-cell *matHeaderCellDef mat-sort-header> NAME </th>
+      <td mat-cell *matCellDef="let element">
+        <img class="profileImg" src={{element.profImg}} height="30px" width="30px" style="border-radius:50%;margin-right:15px;float:left">
+        <span class="name">{{element.firstName}} {{element.lastName}}</span>
+        <br>
+        <span class="quote">{{element.quote}}</span>
+      </td>
+    </ng-container>
 
-  <!-- email Column -->
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> EMAIL </th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  </ng-container>
+    <!-- Department Column -->
+    <ng-container matColumnDef="department">
+      <th width="200rem" mat-header-cell *matHeaderCellDef mat-sort-header> DEPARTMENT </th>
+      <td style="font-size:12px;color:#858585;" mat-cell *matCellDef="let element"> {{element.department}} </td>
+    </ng-container>
 
-  <!-- phone Column -->
-  <ng-container matColumnDef="phone">
-    <th mat-header-cell *matHeaderCellDef> PHONE </th>
-    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-  </ng-container>
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+      <th width="200rem" mat-header-cell *matHeaderCellDef> EMAIL </th>
+      <td style="font-size:12px;color:#0073cf;" mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="role">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> ROLE </th>
-    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
-  </ng-container>
+    <!-- phone Column -->
+    <ng-container matColumnDef="phone">
+      <th width="200rem" mat-header-cell *matHeaderCellDef> PHONE </th>
+      <td style="font-size:12px;color:#858585;" mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
 
-  <!-- <ng-container matColumnDef=" ">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container> -->
+    <!-- role Column -->
+    <ng-container matColumnDef="role">
+      <th width="200rem" mat-header-cell *matHeaderCellDef mat-sort-header> ROLE </th>
+      <td style="font-size:12px;color:#858585;" mat-cell *matCellDef="let element"> {{element.role}} </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="more">
+      <th width="50rem" mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+      <td mat-cell *matCellDef="let element"><a href="#"><img src="assets/more.png"></a> </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
 
 <div class="modal">
   <mat-card *ngIf="showModal" class="example-card">
@@ -64,11 +76,11 @@
         <div class="modalBody">
 
           <mat-form-field>
-            <input matInput placeholder="First Name*" formControlName="firstName">
+            <input matInput required placeholder="First Name" formControlName="firstName">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Last Name*" formControlName="lastName">
+            <input matInput required placeholder="Last Name" formControlName="lastName">
           </mat-form-field>
 
           <mat-form-field>
@@ -95,7 +107,7 @@
             </mat-select>
           </mat-form-field>
           <br>
-          <button mat-raised-button>Cancel</button>
+          <input type="button" value="Cancel" (click)="closeModal()" mat-raised-button>
           <button type="submit" mat-raised-button color="primary">Add Member</button>
         </div>
       </form>

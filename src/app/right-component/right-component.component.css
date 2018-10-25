@@ -18,3 +18,58 @@
   z-index: 2;
   cursor: pointer;
 }
+
+.projectName {
+  font-size: 20px;
+  color: #333333;
+}
+
+.topFixed {
+  margin-top: 17px;
+}
+
+.activeText {
+  font-size: 11px;
+  color: #858585;
+}
+
+.searchInput {
+  border-radius: 50px;
+  border: 2px solid lightgrey;
+  margin-left: 20px;
+  height: 22px;
+  /*add search icon*/
+}
+
+.leftPull {
+  float: left;
+}
+.rightPull {
+  float: right;
+}
+
+.table {
+  clear: both;
+}
+.addMember {
+  margin-left: 10px;
+  border-radius: 20px;
+  background-color: blue;
+  /*add plus icon*/
+}
+
+th {
+  background-color: #f6f7f8;
+  color: #5c5c5c;
+  font-size: 12px;
+}
+
+.quote {
+  font-size: 10px;
+  color: #858585;
+}
+
+.name {
+  font-size: 13px;
+  color: #333333;
+}

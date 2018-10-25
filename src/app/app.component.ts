@@ -14,59 +14,73 @@ export class AppComponent {
   public projects = [
     {
       id: 0,
-      name: 'Project A'
+      name: 'Project A',
+      image: 'assets/project.jpg'
     },
     {
       id: 1,
-      name: 'Project B'
+      name: 'Project B',
+      image: 'assets/project.jpg'
     },
     {
       id: 2,
-      name: 'Project C'
+      name: 'Project C',
+      image: 'assets/project.jpg'
     },
     {
       id: 3,
-      name: 'Project D'
+      name: 'Project D',
+      image: 'assets/project.jpg'
     },
     {
       id: 4,
-      name: 'Project E'
+      name: 'Project E',
+      image: 'assets/project.jpg'
     },
     {
       id: 5,
-      name: 'Project F'
+      name: 'Project F',
+      image: 'assets/project.jpg'
     },
     {
       id: 6,
-      name: 'Project G'
+      name: 'Project G',
+      image: 'assets/project.jpg'
     },
     {
       id: 7,
-      name: 'Project H'
+      name: 'Project H',
+      image: 'assets/project.jpg'
     },
     {
       id: 8,
-      name: 'Project I'
+      name: 'Project I',
+      image: 'assets/project.jpg'
     },
     {
       id: 9,
-      name: 'Project J'
+      name: 'Project J',
+      image: 'assets/project.jpg'
     },
     {
       id: 10,
-      name: 'Project K'
+      name: 'Project K',
+      image: 'assets/project.jpg'
     },
     {
       id: 11,
-      name: 'Project L'
+      name: 'Project L',
+      image: 'assets/project.jpg'
     },
     {
       id: 12,
-      name: 'Project M'
+      name: 'Project M',
+      image: 'assets/project.jpg'
     },
     {
       id: 13,
-      name: 'Project N'
+      name: 'Project N',
+      image: 'assets/project.jpg'
     }
   ];
   selectedItem: any = this.projects[0];

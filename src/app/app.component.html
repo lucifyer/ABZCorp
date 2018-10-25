@@ -2,8 +2,8 @@
   <img id="logo" src="assets/logo.jpg">
 
   <div id="rightPull" style="float:right;margin-right: 8%;">
-    <img style="padding:0.5em;" src="assets/notification.png" height="20px" width="20px">
-    <img style="padding:0.5em;border-radius:50%" src="assets/profile.jpg" height="40px" width="40px">
+    <img style="padding:0.5em;margin-bottom: 8px;" src="assets/notification.png" height="20px" width="20px">
+    <img style="padding:0.5em;border-radius:50%;" src="assets/profile.jpg" height="40px" width="40px">
   </div>
 
 </div>
@@ -21,9 +21,10 @@
     </div>
 
     <div id="projectList">
-
       <ul *ngFor="let project of projects">
-        <li class="projects" [ngClass]="{'active': selectedItem == project}" (click)="passId(project)">
+
+        <li style="cursor:pointer;" class="projects" [ngClass]="{'active': selectedItem == project}" (click)="passId(project)">
+          <img src={{project.image}} height="20px" width="20px" style="border-radius:50%;margin-right:5px;float: left">
           {{project.name}}
         </li>
       </ul>
