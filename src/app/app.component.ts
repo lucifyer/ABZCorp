@@ -6,11 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  /*Initial project A to be sent to right component*/
+
   public toChild = {
     id: 0,
     name: 'Project A'
   };
+  currentYear: number;
 
+  /*JSON object of projects, can be moved to file and services can be used to fetch the file from server*/
   public projects = [
     {
       id: 0,
@@ -83,9 +87,18 @@ export class AppComponent {
       image: 'assets/project.jpg'
     }
   ];
+
+  //Store the current selected project
   selectedItem: any = this.projects[0];
+
+  //Pass the new selected project to right component and update selected project
   passId(newValue: any) {
     this.toChild = newValue;
-    this.selectedItem = newValue; // don't forget to update the model here
+    this.selectedItem = newValue;
+  }
+
+  //Get current year for dynamic footer
+  ngOnInit() {
+    this.currentYear = new Date().getFullYear();
   }
 }

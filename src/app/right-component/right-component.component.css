@@ -1,3 +1,4 @@
+/*Form modal*/
 .modal {
   position: absolute;
   z-index: 200;
@@ -19,7 +20,31 @@
   z-index: 2;
   cursor: pointer;
 }
+.cancelButton {
+  margin-right: 0px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: blue;
+}
+.blueButton {
+  margin-left: 10px;
+  border-radius: 20px;
+  background-color: blue;
+  font-size: 13px;
+  color: #ffffff;
+}
 
+.leftInput {
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+.rightInput {
+  margin-left: 50px;
+}
+
+/*Top fixed bar*/
 .projectName {
   font-size: 20px;
   color: #333333;
@@ -56,31 +81,9 @@ input.searchInput {
   float: right;
 }
 
+/*Table Design*/
 .table {
   clear: both;
-}
-.blueButton {
-  margin-left: 10px;
-  border-radius: 20px;
-  background-color: blue;
-  font-size: 13px;
-  color: #ffffff;
-}
-.cancelButton {
-  margin-right: 0px;
-  border-radius: 20px;
-  background-color: #ffffff;
-  font-size: 13px;
-  color: blue;
-}
-
-.leftInput {
-  margin-right: 50px;
-  margin-top: 20px;
-}
-
-.rightInput {
-  margin-left: 50px;
 }
 
 th {

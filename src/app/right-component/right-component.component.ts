@@ -8,6 +8,11 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./right-component.component.css']
 })
 export class RightComponentComponent implements OnInit {
+  /*******************
+   Variable Declarations
+  *******************/
+
+  //Store the initial list of employees to start with
   public initEmployees = [
     {
       firstName: 'Dean',
@@ -191,9 +196,10 @@ export class RightComponentComponent implements OnInit {
     }
   ];
   public employees = [];
-  projectName: string;
+  projectName: string = '';
   onlineCount: number = 0;
 
+  // For dropdown menu
   roles: Object = [
     { value: 'Manager' },
     { value: 'Sr. Manager' },
@@ -220,25 +226,26 @@ export class RightComponentComponent implements OnInit {
   sort: MatSort;
   addMember: FormGroup;
   emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-  phonePattern: any = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
   showModal: boolean = false;
-
   checked: boolean = false;
-  color: string = 'primary';
-
   @Input()
   data: any;
   dataSource: any;
 
+  /*******************
+   Methods
+  *******************/
+
   constructor(private fb: FormBuilder) {
+    //Form contents with validations
     this.addMember = this.fb.group({
       firstName: [null, Validators.compose([Validators.required])],
       lastName: [null, Validators.compose([Validators.required])],
-      phone: [
+      phone: [null, null],
+      email: [
         null,
-        Validators.compose([Validators.pattern(this.phonePattern)])
+        Validators.compose([Validators.pattern(this.emailPattern)])
       ],
-      email: ['', Validators.compose([Validators.pattern(this.emailPattern)])],
       role: [null, null],
       department: [null, null]
     });
@@ -250,8 +257,6 @@ export class RightComponentComponent implements OnInit {
     for (const prop in this.initEmployees) {
       if (this.initEmployees[prop].projectID == this.data.id)
         this.employees.push(this.initEmployees[prop]);
-
-      // console.log(this.initEmployees[prop].firstName);
     }
 
     for (const prop in this.employees) {
@@ -261,14 +266,14 @@ export class RightComponentComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.employees);
     this.dataSource.sort = this.sort;
   }
+
   ngOnInit() {
     this.projectName = this.data.name;
-
     this.updateEmployees();
   }
 
-  ngOnChanges(changes) {
-    // changes.prop contains the old and the new value...
+  ngOnChanges() {
+    //When the project selected is changed in left panel
     // console.log(this.data);
     //Filter employees based on project id
     this.projectName = this.data.name;
@@ -298,7 +303,6 @@ export class RightComponentComponent implements OnInit {
   }
 
   displayModal() {
-    //Display the modal of form to add a new employee
     this.showModal = true;
   }
 
@@ -331,6 +335,7 @@ export class RightComponentComponent implements OnInit {
   }
 
   public onlineChange() {
+    //Trigger member display on onlineStat value
     this.checked = !this.checked;
     if (this.checked == true) {
       this.onlineCount = 0;
