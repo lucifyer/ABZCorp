@@ -82,14 +82,20 @@ input.searchInput {
 }
 
 /*Table Design*/
+
 .table {
   clear: both;
+  height: 28rem;
+  overflow-y: auto;
 }
 
 th {
   background-color: #f6f7f8;
   color: #5c5c5c;
   font-size: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 
 .quote {
