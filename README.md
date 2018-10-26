@@ -10,7 +10,7 @@ Members can filtered according to projects, online status. Dynamic searching can
 Add member adds a new member to the project selected with the details entered.
 
 Here's the landing page
-![Landing page](https://github.com/lucifyer/ABZCorp/blob/master/src/assets/landingPage.jpg)
+![Landing page](https://github.com/lucifyer/ABZCorp/blob/master/src/assets/landingPage.png)
 
 And a popup modal to add members
-![modal](https://github.com/lucifyer/ABZCorp/blob/master/src/assets/modal.jpg)
+![modal](https://github.com/lucifyer/ABZCorp/blob/master/src/assets/modal.png)
